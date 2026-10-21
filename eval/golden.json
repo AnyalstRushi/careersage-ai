@@ -1,0 +1,142 @@
+[
+ {
+  "q": "How can I become a data analyst from scratch?",
+  "expect": "data-analyst:roadmap"
+ },
+ {
+  "q": "What is the learning path to become a data scientist?",
+  "expect": "data-scientist:roadmap"
+ },
+ {
+  "q": "Roadmap to become a ML engineer",
+  "expect": "ml-engineer:roadmap"
+ },
+ {
+  "q": "How do I become an AI engineer working with LLMs?",
+  "expect": "ai-engineer:roadmap"
+ },
+ {
+  "q": "Plan to learn backend development",
+  "expect": "backend-developer:roadmap"
+ },
+ {
+  "q": "How to start a career as a frontend developer?",
+  "expect": "frontend-developer:roadmap"
+ },
+ {
+  "q": "Steps to become a DevOps engineer",
+  "expect": "devops-engineer:roadmap"
+ },
+ {
+  "q": "How do I become a cloud engineer?",
+  "expect": "cloud-engineer:roadmap"
+ },
+ {
+  "q": "How to become a cybersecurity analyst?",
+  "expect": "cybersecurity-analyst:roadmap"
+ },
+ {
+  "q": "Interview questions for data analyst",
+  "expect": "data-analyst:interview"
+ },
+ {
+  "q": "What will they ask in a data scientist interview?",
+  "expect": "data-scientist:interview"
+ },
+ {
+  "q": "Prepare me for a machine learning engineer interview",
+  "expect": "ml-engineer:interview"
+ },
+ {
+  "q": "AI engineer interview questions",
+  "expect": "ai-engineer:interview"
+ },
+ {
+  "q": "Backend developer interview preparation",
+  "expect": "backend-developer:interview"
+ },
+ {
+  "q": "Frontend developer interview questions",
+  "expect": "frontend-developer:interview"
+ },
+ {
+  "q": "DevOps interview questions",
+  "expect": "devops-engineer:interview"
+ },
+ {
+  "q": "cloud engineer interview prep",
+  "expect": "cloud-engineer:interview"
+ },
+ {
+  "q": "Common cybersecurity analyst interview questions",
+  "expect": "cybersecurity-analyst:interview"
+ },
+ {
+  "q": "What skills are required for a data analyst?",
+  "expect": "data-analyst:overview"
+ },
+ {
+  "q": "Which skills does a data scientist need?",
+  "expect": "data-scientist:overview"
+ },
+ {
+  "q": "Skills needed for ML engineer",
+  "expect": "ml-engineer:overview"
+ },
+ {
+  "q": "Required skills of an AI engineer",
+  "expect": "ai-engineer:overview"
+ },
+ {
+  "q": "What skills do backend developers need?",
+  "expect": "backend-developer:overview"
+ },
+ {
+  "q": "Skills required for frontend developer",
+  "expect": "frontend-developer:overview"
+ },
+ {
+  "q": "What skills does a devops engineer need?",
+  "expect": "devops-engineer:overview"
+ },
+ {
+  "q": "cloud engineer required skills",
+  "expect": "cloud-engineer:overview"
+ },
+ {
+  "q": "Skills for cybersecurity analyst",
+  "expect": "cybersecurity-analyst:overview"
+ },
+ {
+  "q": "how to become a machin learnin engineer",
+  "expect": "ml-engineer:roadmap"
+ },
+ {
+  "q": "What is the weather in Pune today?",
+  "expect": null
+ },
+ {
+  "q": "Who won the cricket world cup?",
+  "expect": null
+ },
+ {
+  "q": "Give me a recipe for biryani",
+  "expect": null
+ },
+ {
+  "q": "Write a poem about the moon",
+  "expect": null
+ },
+ {
+  "q": "What is the capital of France?",
+  "expect": null
+ },
+ {
+  "q": "Tell me a joke",
+  "expect": null
+ },
+ {
+  "q": "How do I learn to cook pasta?",
+  "expect": null
+ }
+]
