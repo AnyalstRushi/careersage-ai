@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/deck-overview.svg" alt="CareerSage AI project deck: problem, solution, capabilities, architecture, run and roadmap" width="100%">
+  <img src="assets/deck-overview.svg" alt="CareerSage AI project deck: cover, problem, solution, features, architecture, run and deploy" width="100%">
 </div>
 
 # CareerSage AI
