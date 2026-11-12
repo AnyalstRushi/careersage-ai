@@ -22,6 +22,18 @@
 
 <br>
 
+## 🎞️ Watch the deck
+
+<div align="center">
+
+<img src="assets/deck-slides.gif" alt="CareerSage AI project deck: auto-playing slideshow of all 9 slides" width="100%">
+
+<sub>Auto-playing slideshow of the full project deck &nbsp;·&nbsp; <a href="CareerSage_AI_Final.pdf">Open the PDF</a> to browse slide by slide</sub>
+
+</div>
+
+<br>
+
 ## 🎯 Why it's different
 
 | | Typical chat AI | **CareerSage AI** |
@@ -62,9 +74,15 @@ Real inputs and real outputs. Every example below is asserted in the automated t
 
 ```text
 ❯ What skills are required for a data analyst role?
+
+Data Analyst: Turns raw data into insights and dashboards that help businesses decide.
+Required skills: sql, excel, python, pandas, statistics, data visualization,
+power bi, data cleaning.
+
+Sources: [data-analyst:overview], [cybersecurity-analyst:overview], [data-scientist:overview]
 ```
 
-The answer contains the role summary and the exact skill list from the knowledge base, and ends with the `[doc-id]` citations you can verify.
+The answer holds the role summary and the exact skill list from the knowledge base, and ends with `[doc-id]` citations you can verify.
 
 ### 2 · Typos and intent, handled
 
@@ -231,18 +249,6 @@ curl -X POST http://localhost:8000/api/recommend \
 - Request bodies are capped at 100 KB and inputs are validated
 - Per-IP rate limiting protects the API
 - Docker image runs as a non-root user and bakes in no secrets
-
-<br>
-
-## 📑 Project deck
-
-<div align="center">
-
-<img src="assets/deck-overview.svg" alt="CareerSage AI project deck: cover, problem, solution, features, architecture, run and deploy" width="100%">
-
-**[⬇️ Download the full deck (PDF)](CareerSage_AI_Final.pdf)**
-
-</div>
 
 <br>
 
