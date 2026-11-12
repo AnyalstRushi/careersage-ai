@@ -1,38 +1,74 @@
-<p align="center"><img src="assets/project-cover.svg" alt="CareerSage AI: career intelligence grounded in evidence" width="100%"></p>
+<div align="center">
 
-<h1 align="center">CareerSage AI</h1>
-<p align="center">A retrieval-first career intelligence API with cited answers, resume skill-gap analysis, and role recommendations.</p>
-<p align="center"><a href="#project-at-a-glance">Overview</a> · <a href="#system-design">Architecture</a> · <a href="#run-locally">Run locally</a> · <a href="README-original.md">Complete technical guide</a></p>
+# 🎯 CareerSage AI
 
-## Project at a glance
+### Career intelligence. Grounded in evidence.
 
-| The problem | The approach |
+**A retrieval-first RAG API for career questions, resume skill-gap analysis, and role recommendations.**
+
+![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![RAG](https://img.shields.io/badge/RAG-Grounded-8A2BE2?style=for-the-badge)
+![API](https://img.shields.io/badge/API-REST-00D9FF?style=for-the-badge)
+![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
+
+[Complete technical guide](README-original.md) · [Architecture](docs/ARCHITECTURE.md)
+
+---
+
+## 🎬 SLIDE 1 — The Problem
+
+| Traditional career chatbots | CareerSage AI |
 |---|---|
-| Career advice can be difficult to verify. | Retrieve from a curated knowledge base and include document citations. |
-| Resume skills do not always match a target role. | Compare resume skills against role requirements. |
-| General questions can distract a career assistant. | Apply a scope guard before generating an answer. |
+| Confident but unverifiable answers | Answers grounded in retrieved documents |
+| Generic advice | Role-specific career guidance |
+| Resume analysis is shallow | Skill-gap analysis against target roles |
+| Off-topic questions confuse the model | Scope guard refuses unrelated queries |
 
-## What you can explore
+---
 
-| Career Q&A | Resume analysis | Role recommendations |
-|---|---|---|
-| Answers grounded in retrieved context. | Skill gaps for a selected target role. | Roles suggested from resume skills. |
+## 💡 SLIDE 2 — The Solution
 
-## System design
+CareerSage uses a **retrieval-first design**: it understands the question, retrieves relevant context, and generates an answer only from that context.
+
+```text
+Career question → Normalize → Scope guard → Retrieve → Cited answer
+```
+
+Every answer includes source citations such as `[data-analyst:roadmap]`.
+
+---
+
+## 🧠 SLIDE 3 — Core Capabilities
+
+| Capability | What it delivers |
+|---|---|
+| **Career Q&A** | Grounded answers with inline citations |
+| **Resume skill gaps** | Compares resume skills with a target role |
+| **Role recommendations** | Suggests suitable roles from resume skills |
+| **Hallucination control** | Refuses out-of-scope questions |
+| **Query intelligence** | Handles aliases and common typos |
+| **Safe fallback** | Extractive answers work without an LLM key |
+
+---
+
+## ⚙️ SLIDE 4 — How It Works
 
 ```mermaid
 flowchart LR
-    A[Question] --> B[Validation and rate limiting]
-    B --> C[Normalization and scope guard]
-    C --> D[BM25 and intent boosting]
-    D --> E[Retrieved context]
+    A[User question] --> B[Validation + rate limiting]
+    B --> C[Normalization + scope guard]
+    C --> D[BM25 retrieval + intent boosting]
+    D --> E[Top context selection]
     E --> F[Optional LLM or extractive fallback]
-    F --> G[Cited answer and sources]
+    F --> G[Cited answer + sources]
 ```
 
-The core API uses the Python standard library. Optional LLM generation supports Gemini or Claude; extractive fallback works without an LLM key.
+The core API uses only the Python standard library. Optional LLM generation supports Gemini or Claude.
 
-## Run locally
+---
+
+## 🧪 SLIDE 5 — Try It Locally
 
 ```bash
 git clone https://github.com/AnyalstRushi/careersage-ai.git
@@ -40,34 +76,49 @@ cd careersage-ai
 python -m app.server
 ```
 
-Open `http://localhost:8000`. No public hosted demo is linked here.
-
-## API surface
+Open: `http://localhost:8000`
 
 | Method | Route | Purpose |
 |---|---|---|
 | GET | `/` | Web UI |
-| GET | `/health` | Service health and LLM status |
-| GET | `/api/roles` | Available roles and skills |
-| POST | `/api/ask` | Career questions |
+| GET | `/health` | Health and LLM status |
+| POST | `/api/ask` | Career question |
 | POST | `/api/gap` | Resume skill gaps |
 | POST | `/api/recommend` | Role recommendations |
 
-## Validate the project
+---
+
+## 🚀 SLIDE 6 — Validate & Deploy
 
 ```bash
 python -m unittest discover -v
 python eval/run_eval.py
 ```
 
-These are the documented test commands, not a claim that tests were executed during this visual update.
+Docker deployment:
 
-## Documentation and next steps
+```bash
+docker build -t careersage-ai .
+docker run -p 8000:8000 --env-file .env careersage-ai
+```
 
-- [Complete original guide](README-original.md): setup, example requests, deployment, security, project structure, and roadmap.
-- [Architecture documentation](docs/ARCHITECTURE.md).
-- Planned work includes hybrid retrieval, reranking, live job ingestion, and resume PDF parsing. These are roadmap items, not implemented-feature claims.
+The repository includes Docker and Render deployment configuration.
 
-## License
+---
 
-MIT. See [LICENSE](LICENSE).
+## 🗺️ SLIDE 7 — Roadmap
+
+- [ ] Hybrid BM25 + vector retrieval
+- [ ] Cross-encoder reranking
+- [ ] Live job-posting ingestion
+- [ ] Resume PDF parsing
+- [ ] RAGAS faithfulness evaluation in CI
+- [ ] Marathi and Hindi query support
+
+---
+
+<div align="center">
+
+### ⚡ Career intelligence, grounded in evidence ⚡
+
+</div>
