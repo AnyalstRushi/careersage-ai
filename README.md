@@ -11,7 +11,7 @@
 ![Docker](https://img.shields.io/badge/Docker-ready-2496ED?style=flat-square&logo=docker&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-0ea5e9?style=flat-square)
 
-**[⚡ Quick start](#-quick-start)** &nbsp;·&nbsp; **[🎬 See it work](#-see-it-work)** &nbsp;·&nbsp; **[🧩 Architecture](#-architecture)** &nbsp;·&nbsp; **[🔌 API](#-api)** &nbsp;·&nbsp; **[📑 Project deck](CareerSage_AI_Final.pdf)**
+**[⚡ Quick start](#-quick-start)** &nbsp;·&nbsp; **[🎬 See it work](#-see-it-work)** &nbsp;·&nbsp; **[🧩 Architecture](#-architecture)** &nbsp;·&nbsp; **[🔌 API](#-api)** &nbsp;·&nbsp; **[📚 Documentation](#-documentation)** &nbsp;·&nbsp; **[📑 Project deck](presentations/CareerSage_AI_Final.pdf)**
 
 </div>
 
@@ -234,13 +234,24 @@ curl -X POST http://localhost:8000/api/recommend \
 
 <br>
 
+## 📚 Documentation
+
+- [Project overview](docs/PROJECT_OVERVIEW.md)
+- [Contributing](CONTRIBUTING.md)
+- [Security policy](SECURITY.md)
+- [Code of conduct](CODE_OF_CONDUCT.md)
+- [Pull request template](.github/PULL_REQUEST_TEMPLATE.md)
+
+<br>
+
 ## 📑 Project deck
 
 <div align="center">
 
 <img src="assets/deck-overview.svg" alt="CareerSage AI project deck: cover, problem, solution, features, architecture, run and deploy" width="100%">
 
-**[⬇️ Download the full deck (PDF)](CareerSage_AI_Final.pdf)**
+**[⬇️ Download the full deck (PDF)](presentations/CareerSage_AI_Final.pdf)**  
+**[📊 Download the editable deck (PPTX)](presentations/CareerSage_AI_Final.pptx)**
 
 </div>
 
