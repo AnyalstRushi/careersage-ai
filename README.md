@@ -1,5 +1,21 @@
 <div align="center">
 
+# 📽️ CareerSage AI — Project Presentation
+
+**Explore the project deck directly from the repository front page**
+
+<a href="https://github.com/AnyalstRushi/careersage-ai/blob/main/presentations/CareerSage_AI_Final.pdf">
+  <img src="https://raw.githubusercontent.com/AnyalstRushi/careersage-ai/main/assets/deck-slides.gif" alt="CareerSage AI presentation slide preview — click to open the PDF deck" width="100%">
+</a>
+
+**[📄 Open presentation (PDF)](presentations/CareerSage_AI_Final.pdf)** · **[📊 Download editable PowerPoint (PPTX)](presentations/CareerSage_AI_Final.pptx)**
+
+</div>
+
+---
+
+<div align="center">
+
 <img src="assets/hero.svg" alt="CareerSage AI — evidence-first career intelligence" width="100%">
 
 <br>
@@ -24,22 +40,6 @@
 CareerSage AI is an open-source, retrieval-augmented career assistant. It answers role and skill questions from a curated knowledge base, attaches source IDs to answers, refuses unrelated or unsupported questions, compares resume skills with target roles, and recommends role profiles based on skill overlap.
 
 **The design principle is simple: retrieve first, answer second, cite the evidence.**
-
-## Product preview
-
-<div align="center">
-
-<img src="assets/chatbot-preview.svg" alt="CareerSage AI responsive chatbot workspace preview" width="100%">
-
-**One workspace · Three workflows**
-
-</div>
-
-| Workflow | What it does |
-|---|---|
-| **Ask CareerSage** | Career Q&A with retrieved context, source references and an out-of-scope refusal path |
-| **Skill-gap analysis** | Compares resume text with a selected role and returns matched skills, missing skills and a learning roadmap |
-| **Role matching** | Ranks supported role profiles by overlap with skills found in resume text |
 
 ## Verified project snapshot
 
