@@ -35,8 +35,6 @@
 
 ---
 
----
-
 ## What is CareerSage AI?
 
 CareerSage AI is an open-source, retrieval-augmented career assistant. It answers role and skill questions from a curated knowledge base, attaches source IDs to answers, refuses unrelated or unsupported questions, compares resume skills with target roles, and recommends role profiles based on skill overlap.
