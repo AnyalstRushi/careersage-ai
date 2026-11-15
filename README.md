@@ -1,159 +1,78 @@
 <div align="center">
 
-<img src="assets/hero.svg" alt="CareerSage AI: career answers you can verify" width="100%">
+<img src="assets/hero.svg" alt="CareerSage AI — evidence-first career intelligence" width="100%">
 
 <br>
 
 [![CI](https://img.shields.io/github/actions/workflow/status/AnyalstRushi/careersage-ai/ci.yml?style=flat-square&label=CI&logo=githubactions&logoColor=white)](https://github.com/AnyalstRushi/careersage-ai/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?style=flat-square&logo=python&logoColor=white)
-![Dependencies](https://img.shields.io/badge/dependencies-0-22c55e?style=flat-square)
-![RAG](https://img.shields.io/badge/RAG-grounded%20%2B%20cited-8b5cf6?style=flat-square)
+![Core dependencies](https://img.shields.io/badge/core%20dependencies-0-16a34a?style=flat-square)
+![Retrieval](https://img.shields.io/badge/RAG-BM25%20%2B%20citations-8b5cf6?style=flat-square)
 ![Docker](https://img.shields.io/badge/Docker-ready-2496ED?style=flat-square&logo=docker&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-0ea5e9?style=flat-square)
 
-**[⚡ Quick start](#-quick-start)** &nbsp;·&nbsp; **[🎬 See it work](#-see-it-work)** &nbsp;·&nbsp; **[🧩 Architecture](#-architecture)** &nbsp;·&nbsp; **[🔌 API](#-api)** &nbsp;·&nbsp; **[📚 Documentation](#-documentation)** &nbsp;·&nbsp; **[📑 Project deck](presentations/CareerSage_AI_Final.pdf)**
+**Evidence-first career intelligence. No confident guessing.**
+
+[⚡ Quick start](#-quick-start) · [💬 Product preview](#-product-preview) · [🧠 How it works](#-how-it-works) · [🔌 API](#-api-reference) · [📚 Docs](#-documentation) · [🤝 Contribute](CONTRIBUTING.md)
 
 </div>
 
-## 📌 Project presentation & key resources
+---
+
+## What is CareerSage AI?
+
+CareerSage AI is an open-source, retrieval-augmented career assistant. It answers role and skill questions from a curated knowledge base, attaches source IDs to answers, refuses unrelated or unsupported questions, compares resume skills with target roles, and recommends role profiles based on skill overlap.
+
+**The design principle is simple: retrieve first, answer second, cite the evidence.**
+
+## Product preview
 
 <div align="center">
 
-<img src="assets/deck-overview.svg" alt="CareerSage AI presentation preview" width="100%">
+<img src="assets/chatbot-preview.svg" alt="CareerSage AI responsive chatbot workspace preview" width="100%">
 
-**[📊 View / download PowerPoint](presentations/CareerSage_AI_Final.pptx)** &nbsp; · &nbsp; **[📄 View PDF presentation](presentations/CareerSage_AI_Final.pdf)**
-
-[🏗️ Architecture](docs/ARCHITECTURE.md) &nbsp; · &nbsp; [📘 Project overview](docs/PROJECT_OVERVIEW.md)
+**One workspace · Three workflows**
 
 </div>
 
-> **Tip:** The PDF opens in GitHub's browser preview. The editable PPTX can be downloaded and opened in PowerPoint or Google Slides.
+| Workflow | What it does |
+|---|---|
+| **Ask CareerSage** | Career Q&A with retrieved context, source references and an out-of-scope refusal path |
+| **Skill-gap analysis** | Compares resume text with a selected role and returns matched skills, missing skills and a learning roadmap |
+| **Role matching** | Ranks supported role profiles by overlap with skills found in resume text |
 
-<br>
-
-> **Most AI career tools sound confident and can't show their work.**
-> CareerSage AI answers only from a curated knowledge base, cites every claim with a checkable `[doc-id]`, and refuses what it can't ground. No invented skills, no made-up courses.
-
-<br>
-
-## 🎯 Why it's different
-
-| | Typical chat AI | **CareerSage AI** |
-|---|---|---|
-| Source of truth | Model memory | **27 curated documents** (9 roles × 3 document types) |
-| Citations | None, or invented | **Every answer ends with `[doc-id]`** |
-| Off-topic question | Answers anyway | **Refused, never guessed** |
-| Typos like `machin learnin` | Hit or miss | **Understood as *machine learning*** |
-| Runs without an API key | No | **Yes, via cited extractive fallback** |
-| Runtime dependencies | Many | **0 (Python standard library only)** |
-
-<br>
-
-## 📊 Measured, not claimed
+## Verified project snapshot
 
 <div align="center">
 
-<table>
-<tr>
-<td align="center" width="25%"><h2>23 / 23</h2><sub>automated tests<br>passing</sub></td>
-<td align="center" width="25%"><h2>100%</h2><sub>hit@1 on a<br>35-question golden set</sub></td>
-<td align="center" width="25%"><h2>100%</h2><sub>out-of-scope<br>refusal</sub></td>
-<td align="center" width="25%"><h2>0</h2><sub>third-party<br>dependencies</sub></td>
-</tr>
-</table>
+| 23 / 23 | 35 | 9 | 0 |
+|:---:|:---:|:---:|:---:|
+| Automated tests passing | Golden-set evaluation questions | Career role profiles | Core third-party dependencies |
 
 </div>
 
-Tests run with `python -m unittest discover -v` and the golden-set evaluation with `python eval/run_eval.py`. Both run on every push through GitHub Actions.
+The repository's current automated test suite contains 23 tests. The evaluation runner uses a 35-question golden set and enforces its configured retrieval, refusal and citation thresholds. Reproduce the checks locally:
 
-<br>
-
-## 🎬 See it work
-
-Real inputs and real outputs. Every example below is asserted in the automated test suite, so the numbers are reproducible.
-
-### 1 · Ask a career question
-
-```text
-❯ What skills are required for a data analyst role?
+```bash
+python -m unittest discover -v
+python eval/run_eval.py
 ```
 
-The answer contains the role summary and the exact skill list from the knowledge base, and ends with the `[doc-id]` citations you can verify.
+These are repository-level test and evaluation counts, not a claim of production accuracy or hiring outcomes.
 
-### 2 · Typos and intent, handled
+## Why it is different
 
-| You type | CareerSage understands | Result |
-|---|---|---|
-| `machin learnin` | typo-fixed to **machine learning** | `[ml-engineer:roadmap]` ranked first |
-| `how to become ...` | intent = **roadmap**, not summary | roadmap document boosted to the top |
-
-### 3 · Resume skill-gap analyzer
-
-```text
-Target role : Backend Developer
-Resume      : Python, SQL, Docker, Git, FastAPI, testing
-
-   75% match
-   Missing  : rest apis, system design
-   + roadmap and interview focus for the gap
-```
-
-### 4 · Role matcher
-
-```text
-Resume : html css javascript react typescript git
-
-   #1  Frontend Developer      (ranked by % of required skills matched)
-```
-
-<br>
-
-## 🧩 Architecture
-
-```mermaid
-flowchart LR
-    Q(["❓ Question"]) --> V["Validate +<br/>rate limit"]
-    V --> N["Normalize<br/>aliases + typos"]
-    N --> G{"Career<br/>scope?"}
-    G -- "no" --> R(["🚫 Refuse"])
-    G -- "yes" --> B["BM25 search<br/>27 docs"]
-    B --> I["Intent boost<br/>roadmap / interview / skills"]
-    I --> K["Top-K context"]
-    K --> L["LLM answer<br/>Gemini or Claude"]
-    K --> E["Extractive<br/>fallback"]
-    L --> A(["✅ Cited answer"])
-    E --> A
-
-    classDef start fill:#0b1220,stroke:#22d3ee,color:#e2e8f0;
-    classDef step fill:#0b1220,stroke:#334155,color:#e2e8f0;
-    classDef stop fill:#7f1d1d,stroke:#ef4444,color:#fff;
-    classDef good fill:#8b5cf6,stroke:#22d3ee,color:#fff;
-    class Q start;
-    class V,N,G,B,I,K,L,E step;
-    class R stop;
-    class A good;
-```
-
-**Design principle:** retrieve first, then answer. The language model, when enabled, can only rephrase what retrieval found. With no API key the system still works through the extractive fallback and the answer is always cited.
-
-<br>
-
-## ✨ Features
-
-| | Capability | Details |
-|---|---|---|
-| 🔎 | **Grounded Q&A** | BM25 retrieval with intent boosting over a curated knowledge base |
-| ✅ | **Verifiable citations** | Inline `[doc-id]` references on every answer |
-| 📊 | **Skill-gap analyzer** | Resume vs. target role: % match, missing skills, roadmap and interview focus |
-| 🎯 | **Role matcher** | Ranks roles by the % of required skills your resume covers |
-| 🧠 | **Alias and typo tolerance** | `ML → machine learning`, `k8s → kubernetes`, typo fixing via `difflib` |
-| 🚫 | **Scope guard** | No role or skill term in the question means a refusal, not a guess |
-| 🔌 | **Optional LLM mode** | Gemini or Anthropic Claude, with automatic extractive fallback |
-| 🛡️ | **Hardened by default** | 100 KB body cap, input validation, per-IP rate limit, non-root Docker |
-
-<br>
+| Common chatbot failure | CareerSage approach |
+|---|---|
+| Answers beyond its knowledge | Career-domain scope guard and explicit refusal |
+| Unsupported career advice | Curated role knowledge base and retrieved context |
+| Citations that cannot be checked | Stable source IDs such as `[ai-engineer:roadmap]` |
+| One-size-fits-all career suggestions | Resume-to-role skill overlap and missing-skill analysis |
+| Requires a paid model to start | Standard-library extractive mode works without an API key |
 
 ## ⚡ Quick start
+
+**Requirements:** Python 3.11 or newer. No package installation is required for the core application.
 
 ```bash
 git clone https://github.com/AnyalstRushi/careersage-ai.git
@@ -161,17 +80,14 @@ cd careersage-ai
 python -m app.server
 ```
 
-Open **http://localhost:8000** and you get the UI and the API in one process.
+Open **http://localhost:8000** in your browser.
 
-> [!TIP]
-> Nothing to install. The core runs on the Python standard library alone.
+The default core uses Python's standard library. Optional LLM generation can be enabled with a provider key; without it, CareerSage uses its cited extractive fallback.
 
 <details>
-<summary><b>🔑 Enable LLM answers (optional)</b></summary>
+<summary><strong>Optional: enable LLM generation</strong></summary>
 
-<br>
-
-Create a `.env` file:
+Create a local `.env` file (never commit it) and configure the provider supported by the current `app/llm.py` implementation. For Gemini, the repository currently documents:
 
 ```env
 GEMINI_API_KEY=your_gemini_api_key
@@ -180,46 +96,74 @@ RATE_LIMIT=60
 PORT=8000
 ```
 
-Restart the server. `GET /health` should now return:
-
-```json
-{"status":"ok","docs":27,"llm":true}
-```
-
-Never commit `.env` or put API keys in source code.
+Restart the server and check `GET /health`. Keep all credentials in environment variables or a secret manager.
 
 </details>
 
-<br>
+## 🧠 How it works
 
-## 🔌 API
+```mermaid
+flowchart TD
+    A["Career question"] --> B["Input validation + rate limit"]
+    B --> C["Normalize aliases and typos"]
+    C --> D{"Career-domain scope?"}
+    D -- "No" --> E["Refuse unsupported request"]
+    D -- "Yes" --> F["BM25 retrieval over curated role documents"]
+    F --> G["Intent boost + top-k context"]
+    G --> H{"LLM configured?"}
+    H -- "Yes" --> I["Optional LLM generation"]
+    H -- "No / unavailable" --> J["Cited extractive fallback"]
+    I --> K["Answer + source IDs"]
+    J --> K
+```
 
-| Method | Endpoint | What it does |
+The same API also exposes deterministic resume skill-gap analysis and role matching. See the [architecture notes](docs/ARCHITECTURE.md) for the request flow and design decisions.
+
+## ✨ Capabilities
+
+- **Grounded career Q&A** — BM25 retrieval across curated role knowledge.
+- **Source references** — answer payloads include source IDs that map to role documents.
+- **Scope guard** — unrelated or unsupported questions are refused instead of guessed.
+- **Intent-aware retrieval** — roadmap, interview and overview intent influence ranking.
+- **Alias and typo tolerance** — common skill aliases and approximate typo correction.
+- **Resume skill-gap analysis** — matched skills, missing skills, role score and roadmap.
+- **Role recommendations** — ranks supported roles by skill overlap.
+- **Optional LLM mode** — provider-backed generation with an extractive fallback.
+- **Operational safeguards** — request-size limit, input validation, per-IP rate limiting, health endpoint and non-root Docker setup.
+
+## 🔌 API reference
+
+| Method | Endpoint | Purpose |
 |:---:|---|---|
-| `GET` | `/` | Web UI |
-| `GET` | `/health` | Status, document count, LLM on/off |
-| `GET` | `/api/roles` | Supported roles and their skills |
-| `POST` | `/api/ask` | Ask a career question, get a cited answer |
-| `POST` | `/api/gap` | Resume vs. target role skill-gap analysis |
-| `POST` | `/api/recommend` | Recommend roles from resume text |
+| `GET` | `/` | Responsive web application |
+| `GET` | `/health` | Service status, document count and LLM status |
+| `GET` | `/api/roles` | Supported roles and skill lists |
+| `POST` | `/api/ask` | Grounded career question and citations |
+| `POST` | `/api/gap` | Resume-to-role skill-gap analysis |
+| `POST` | `/api/recommend` | Role recommendations from resume text |
 
 <details>
-<summary><b>📮 Example requests</b></summary>
+<summary><strong>Example API requests</strong></summary>
 
-<br>
+**Ask a question**
 
 ```bash
-# Ask a career question
 curl -X POST http://localhost:8000/api/ask \
   -H "Content-Type: application/json" \
   -d '{"question":"What skills are required for a data analyst role?"}'
+```
 
-# Resume skill gap
+**Analyze a skill gap**
+
+```bash
 curl -X POST http://localhost:8000/api/gap \
   -H "Content-Type: application/json" \
   -d '{"resume":"Python SQL Excel Power BI dashboards","role":"data-analyst"}'
+```
 
-# Role recommendation
+**Recommend roles**
+
+```bash
 curl -X POST http://localhost:8000/api/recommend \
   -H "Content-Type: application/json" \
   -d '{"resume":"Python SQL Azure ETL data pipelines"}'
@@ -227,93 +171,58 @@ curl -X POST http://localhost:8000/api/recommend \
 
 </details>
 
-<br>
+## 🐳 Run with Docker
 
-## 🚢 From laptop to public URL
-
-| Step | Command / action |
-|:---:|---|
-| **1 · Run** | `python -m app.server` |
-| **2 · Containerize** | `docker build -t careersage-ai .` then `docker run -p 8000:8000 --env-file .env careersage-ai` (non-root user, health check at `/health`) |
-| **3 · Ship** | GitHub Actions runs tests and eval, then Render deploys from `render.yaml`. Set `GEMINI_API_KEY` as an environment variable. |
-
-<br>
-
-## 🛡️ Security
-
-- API keys come from environment variables only, and `.env` is git-ignored
-- Request bodies are capped at 100 KB and inputs are validated
-- Per-IP rate limiting protects the API
-- Docker image runs as a non-root user and bakes in no secrets
-
-<br>
-
-## 📚 Documentation
-
-- [Project overview](docs/PROJECT_OVERVIEW.md)
-- [Contributing](CONTRIBUTING.md)
-- [Security policy](SECURITY.md)
-- [Code of conduct](CODE_OF_CONDUCT.md)
-- [Pull request template](.github/PULL_REQUEST_TEMPLATE.md)
-
-<br>
-
-## 📑 Project deck
-
-<div align="center">
-
-<img src="assets/deck-overview.svg" alt="CareerSage AI project deck: cover, problem, solution, features, architecture, run and deploy" width="100%">
-
-**[⬇️ Download the full deck (PDF)](presentations/CareerSage_AI_Final.pdf)**  
-**[📊 Download the editable deck (PPTX)](presentations/CareerSage_AI_Final.pptx)**
-
-</div>
-
-<br>
-
-<details>
-<summary><b>🗂️ Project structure</b></summary>
-
-<br>
-
-```text
-careersage-ai/
-├── app/
-│   ├── server.py          # HTTP server, validation, rate limiting
-│   ├── rag.py             # normalize, scope guard, BM25, intent boost
-│   ├── llm.py             # optional Gemini / Claude generation
-│   ├── data.py            # curated knowledge base
-│   └── static/index.html  # web UI
-├── tests/                 # unit and API tests
-├── eval/                  # golden set and evaluation runner
-├── docs/ARCHITECTURE.md
-├── .github/workflows/ci.yml
-├── Dockerfile
-├── render.yaml
-└── LICENSE
+```bash
+docker build -t careersage-ai .
+docker run --rm -p 8000:8000 careersage-ai
 ```
 
-</details>
+For optional provider-backed generation, pass secrets through environment variables at runtime. Do not bake credentials into the image.
 
-<br>
+## 🔐 Security and privacy notes
+
+- Do not paste real personal contact details or sensitive resume information unless you control and trust the server receiving the request.
+- API keys belong in environment variables or a secret manager; never commit `.env`.
+- The API applies request-size limits, input validation and per-IP rate limiting.
+- The included in-memory rate limiter is suitable for a single process; multi-instance deployments need a shared rate-limit store.
+- Use HTTPS and review deployment settings before exposing an instance publicly.
+
+Report vulnerabilities privately using GitHub's **Report a vulnerability** feature where available. Read [SECURITY.md](SECURITY.md).
+
+## 📚 Documentation and project files
+
+| Resource | Description |
+|---|---|
+| [Project overview](docs/PROJECT_OVERVIEW.md) | Problem, scope, capabilities and project context |
+| [Architecture](docs/ARCHITECTURE.md) | Components, request flow and design principles |
+| [Contributing](CONTRIBUTING.md) | Fork, branch, test and pull-request workflow |
+| [Security policy](SECURITY.md) | Vulnerability reporting and deployment guidance |
+| [Code of conduct](CODE_OF_CONDUCT.md) | Community expectations |
+| [PowerPoint deck](presentations/CareerSage_AI_Final.pptx) | Editable project presentation |
+| [PDF deck](presentations/CareerSage_AI_Final.pdf) | Browser-friendly project presentation |
 
 ## 🗺️ Roadmap
 
-| 🔍 Retrieval upgrades | 🚀 Product upgrades |
-|---|---|
-| ☐ Dense embeddings with Qdrant or pgvector | ☐ Marathi and Hindi queries |
-| ☐ Hybrid BM25 + vector search | ☐ User accounts and conversation memory |
-| ☐ Cross-encoder reranker | ☐ Resume PDF parsing |
-| ☐ Live job-posting ingestion | ☐ RAGAS faithfulness scoring in CI |
+- [ ] Hybrid BM25 + dense-vector retrieval
+- [ ] Optional Qdrant or pgvector integration
+- [ ] Cross-encoder reranking and retrieval evaluation
+- [ ] Marathi and Hindi query support
+- [ ] Resume PDF parsing with explicit user consent
+- [ ] Expanded faithfulness and regression checks in CI
 
-<br>
+Roadmap items are planned work, not current capabilities. Contributions and focused issue reports are welcome.
+
+## 🤝 Contributing
+
+Bug reports, documentation improvements, tests and feature proposals are welcome. Start with [CONTRIBUTING.md](CONTRIBUTING.md), run the test suite and evaluation locally, and open a pull request with a clear description of the change.
 
 ---
 
 <div align="center">
 
-**Built by [@AnyalstRushi](https://github.com/AnyalstRushi)** &nbsp;·&nbsp; MIT License
+**Built by [@AnyalstRushi](https://github.com/AnyalstRushi)** · MIT License
 
-If CareerSage AI is useful or inspiring, a ⭐ on the repo means a lot.
+If this project is useful, consider giving it a ⭐ and sharing thoughtful feedback.
 
 </div>
