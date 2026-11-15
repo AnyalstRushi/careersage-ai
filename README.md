@@ -1,21 +1,5 @@
 <div align="center">
 
-# 📽️ CareerSage AI — Project Presentation
-
-**Explore the project deck directly from the repository front page**
-
-<a href="https://github.com/AnyalstRushi/careersage-ai/blob/main/presentations/CareerSage_AI_Final.pdf">
-  <img src="https://raw.githubusercontent.com/AnyalstRushi/careersage-ai/main/assets/deck-slides.gif" alt="CareerSage AI presentation slide preview — click to open the PDF deck" width="100%">
-</a>
-
-**[📄 Open presentation (PDF)](presentations/CareerSage_AI_Final.pdf)** · **[📊 Download editable PowerPoint (PPTX)](presentations/CareerSage_AI_Final.pptx)**
-
-</div>
-
----
-
-<div align="center">
-
 <img src="assets/hero.svg" alt="CareerSage AI — evidence-first career intelligence" width="100%">
 
 <br>
@@ -32,6 +16,24 @@
 [⚡ Quick start](#-quick-start) · [💬 Product preview](#-product-preview) · [🧠 How it works](#-how-it-works) · [🔌 API](#-api-reference) · [📚 Docs](#-documentation) · [🤝 Contribute](CONTRIBUTING.md)
 
 </div>
+
+---
+
+<div align="center">
+
+# 📽️ CareerSage AI — Project Presentation
+
+**Explore the project deck directly from the repository front page**
+
+<a href="https://github.com/AnyalstRushi/careersage-ai/blob/main/presentations/CareerSage_AI_Final.pdf">
+  <img src="https://raw.githubusercontent.com/AnyalstRushi/careersage-ai/main/assets/deck-slides.gif" alt="CareerSage AI presentation slide preview — click to open the PDF deck" width="100%">
+</a>
+
+**[📄 Open presentation (PDF)](presentations/CareerSage_AI_Final.pdf)** · **[📊 Download editable PowerPoint (PPTX)](presentations/CareerSage_AI_Final.pptx)**
+
+</div>
+
+---
 
 ---
 
