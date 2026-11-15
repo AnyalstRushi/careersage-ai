@@ -15,6 +15,20 @@
 
 </div>
 
+## 📌 Project presentation & key resources
+
+<div align="center">
+
+<img src="assets/deck-overview.svg" alt="CareerSage AI presentation preview" width="100%">
+
+**[📊 View / download PowerPoint](presentations/CareerSage_AI_Final.pptx)** &nbsp; · &nbsp; **[📄 View PDF presentation](presentations/CareerSage_AI_Final.pdf)**
+
+[🏗️ Architecture](docs/ARCHITECTURE.md) &nbsp; · &nbsp; [📘 Project overview](docs/PROJECT_OVERVIEW.md)
+
+</div>
+
+> **Tip:** The PDF opens in GitHub's browser preview. The editable PPTX can be downloaded and opened in PowerPoint or Google Slides.
+
 <br>
 
 > **Most AI career tools sound confident and can't show their work.**
